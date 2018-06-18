@@ -16,11 +16,11 @@
  */
 
 function countSheep(num) {
-	if (num === 0) {
-		return;
-	}
-	console.log(` ${num} - Another sheep jumps over the fence`);
-	countSheep(num - 1);
+  if (num === 0) {
+    return;
+  }
+  console.log(` ${num} - Another sheep jumps over the fence`);
+  countSheep(num - 1);
 }
 
 // countSheep(3);
@@ -36,11 +36,11 @@ function countSheep(num) {
  */
 
 const arrayDouble = arr => {
-	if(arr.length === 0) return [];
+  if(arr.length === 0) return [];
 
-	arr[0] = arr[0] * 2;
+  arr[0] = arr[0] * 2;
 
-	return [arr[0], ...arrayDouble(arr.slice(1))];
+  return [arr[0], ...arrayDouble(arr.slice(1))];
 };
 
 // const arr = [1,2,3];
@@ -52,10 +52,10 @@ const arrayDouble = arr => {
  */
 
 const reverseStr = str => {
-	if (str === '') return '';
-	// Extract part of a string, from the end using .substr(-1)
-	// recusive call excluding the last letter of the string
-	return str.substr(-1) + reverseStr(str.substr(0, str.length -1));
+  if (str === '') return '';
+  // Extract part of a string, from the end using .substr(-1)
+  // recusive call excluding the last letter of the string
+  return str.substr(-1) + reverseStr(str.substr(0, str.length -1));
 };
 
 // console.log(reverseStr('banana'));
@@ -68,10 +68,19 @@ const reverseStr = str => {
  *  This is the Triangular Number Sequence: 1, 3, 6, 10, 15, 21, 28, 36, 45
  */
 
-const nthTriangularNumber = index => {
-	if(index === 0) return 0;
 
-	return index + nthTriangularNumber(index - 1);
+/**
+  * 1   i=1  n=1
+  * 3   i=2  n=3
+  * 6   i=3  n=6
+  * 10  i=4  n=10
+  * 15  i=5  n=15
+  */
+
+const nthTriangularNumber = index => {
+  if(index === 0) return 0;
+
+  return index + nthTriangularNumber(index - 1);
 };
 
 // console.log(nthTriangularNumber(9));
@@ -82,19 +91,23 @@ const nthTriangularNumber = index => {
 
 
 const split = (string, separator = undefined, limit = 0) => {
+	console.log('string: ', string);
+  if(separator === undefined || separator === null) return [];
 
-	if( separator === undefined || separator === null) return [];
-
-	if(!string.length) return [''];
-
-	let character = string[0];
-	if(character === separator) {
-		return ['', ...split(string.substr(1), separator, limit)];
+  if(!string.length) {
+		return [''];
 	}
 
-	let newArray = split(string.substr(1), separator, limit);
+  let character = string[0];
+  if(character === separator) {
+		console.log('character === separator output: ', ['', ...split(string.substr(1), separator, limit)]);
+    return ['', ...split(string.substr(1), separator, limit)];
+  }
+
+  let newArray = split(string.substr(1), separator, limit);
 	newArray[0] = character + newArray[0];
-	return newArray;
+	console.log('newArray ', newArray);
+  return newArray;
 };
 
 // console.log(split('The milk has gone bad', 's'));
@@ -135,3 +148,231 @@ const factorial = num => {
 };
 
 // console.log(factorial(5));
+console.log(split('Hello my name is Joe', ' '));
+/*
+string:  Hello my name is Joe
+string:  ello my name is Joe
+string:  llo my name is Joe
+string:  lo my name is Joe
+string:  o my name is Joe
+string:   my name is Joe
+string:  my name is Joe
+string:  y name is Joe
+string:   name is Joe
+string:  name is Joe
+string:  ame is Joe
+string:  me is Joe
+string:  e is Joe
+string:   is Joe
+string:  is Joe
+string:  s Joe
+string:   Joe
+string:  Joe
+string:  oe
+string:  e
+string:
+newArray  [ 'e' ]
+newArray  [ 'oe' ]
+newArray  [ 'Joe' ]
+character === separator output:  [ '', 'Joe' ]
+string:  Joe
+string:  oe
+string:  e
+string:
+newArray  [ 'e' ]
+newArray  [ 'oe' ]
+newArray  [ 'Joe' ]
+newArray  [ 's', 'Joe' ]
+newArray  [ 'is', 'Joe' ]
+character === separator output:  [ '', 'is', 'Joe' ]
+string:  is Joe
+string:  s Joe
+string:   Joe
+string:  Joe
+string:  oe
+string:  e
+string:
+newArray  [ 'e' ]
+newArray  [ 'oe' ]
+newArray  [ 'Joe' ]
+character === separator output:  [ '', 'Joe' ]
+string:  Joe
+string:  oe
+string:  e
+string:
+newArray  [ 'e' ]
+newArray  [ 'oe' ]
+newArray  [ 'Joe' ]
+newArray  [ 's', 'Joe' ]
+newArray  [ 'is', 'Joe' ]
+newArray  [ 'e', 'is', 'Joe' ]
+newArray  [ 'me', 'is', 'Joe' ]
+newArray  [ 'ame', 'is', 'Joe' ]
+newArray  [ 'name', 'is', 'Joe' ]
+character === separator output:  [ '', 'name', 'is', 'Joe' ]
+string:  name is Joe
+string:  ame is Joe
+string:  me is Joe
+string:  e is Joe
+string:   is Joe
+string:  is Joe
+string:  s Joe
+string:   Joe
+string:  Joe
+string:  oe
+string:  e
+string:
+newArray  [ 'e' ]
+newArray  [ 'oe' ]
+newArray  [ 'Joe' ]
+character === separator output:  [ '', 'Joe' ]
+string:  Joe
+string:  oe
+string:  e
+string:
+newArray  [ 'e' ]
+newArray  [ 'oe' ]
+newArray  [ 'Joe' ]
+newArray  [ 's', 'Joe' ]
+newArray  [ 'is', 'Joe' ]
+character === separator output:  [ '', 'is', 'Joe' ]
+string:  is Joe
+string:  s Joe
+string:   Joe
+string:  Joe
+string:  oe
+string:  e
+string:
+newArray  [ 'e' ]
+newArray  [ 'oe' ]
+newArray  [ 'Joe' ]
+character === separator output:  [ '', 'Joe' ]
+string:  Joe
+string:  oe
+string:  e
+string:
+newArray  [ 'e' ]
+newArray  [ 'oe' ]
+newArray  [ 'Joe' ]
+newArray  [ 's', 'Joe' ]
+newArray  [ 'is', 'Joe' ]
+newArray  [ 'e', 'is', 'Joe' ]
+newArray  [ 'me', 'is', 'Joe' ]
+newArray  [ 'ame', 'is', 'Joe' ]
+newArray  [ 'name', 'is', 'Joe' ]
+newArray  [ 'y', 'name', 'is', 'Joe' ]
+newArray  [ 'my', 'name', 'is', 'Joe' ]
+character === separator output:  [ '', 'my', 'name', 'is', 'Joe' ]
+string:  my name is Joe
+string:  y name is Joe
+string:   name is Joe
+string:  name is Joe
+string:  ame is Joe
+string:  me is Joe
+string:  e is Joe
+string:   is Joe
+string:  is Joe
+string:  s Joe
+string:   Joe
+string:  Joe
+string:  oe
+string:  e
+string:
+newArray  [ 'e' ]
+newArray  [ 'oe' ]
+newArray  [ 'Joe' ]
+character === separator output:  [ '', 'Joe' ]
+string:  Joe
+string:  oe
+string:  e
+string:
+newArray  [ 'e' ]
+newArray  [ 'oe' ]
+newArray  [ 'Joe' ]
+newArray  [ 's', 'Joe' ]
+newArray  [ 'is', 'Joe' ]
+character === separator output:  [ '', 'is', 'Joe' ]
+string:  is Joe
+string:  s Joe
+string:   Joe
+string:  Joe
+string:  oe
+string:  e
+string:
+newArray  [ 'e' ]
+newArray  [ 'oe' ]
+newArray  [ 'Joe' ]
+character === separator output:  [ '', 'Joe' ]
+string:  Joe
+string:  oe
+string:  e
+string:
+newArray  [ 'e' ]
+newArray  [ 'oe' ]
+newArray  [ 'Joe' ]
+newArray  [ 's', 'Joe' ]
+newArray  [ 'is', 'Joe' ]
+newArray  [ 'e', 'is', 'Joe' ]
+newArray  [ 'me', 'is', 'Joe' ]
+newArray  [ 'ame', 'is', 'Joe' ]
+newArray  [ 'name', 'is', 'Joe' ]
+character === separator output:  [ '', 'name', 'is', 'Joe' ]
+string:  name is Joe
+string:  ame is Joe
+string:  me is Joe
+string:  e is Joe
+string:   is Joe
+string:  is Joe
+string:  s Joe
+string:   Joe
+string:  Joe
+string:  oe
+string:  e
+string:
+newArray  [ 'e' ]
+newArray  [ 'oe' ]
+newArray  [ 'Joe' ]
+character === separator output:  [ '', 'Joe' ]
+string:  Joe
+string:  oe
+string:  e
+string:
+newArray  [ 'e' ]
+newArray  [ 'oe' ]
+newArray  [ 'Joe' ]
+newArray  [ 's', 'Joe' ]
+newArray  [ 'is', 'Joe' ]
+character === separator output:  [ '', 'is', 'Joe' ]
+string:  is Joe
+string:  s Joe
+string:   Joe
+string:  Joe
+string:  oe
+string:  e
+string:
+newArray  [ 'e' ]
+newArray  [ 'oe' ]
+newArray  [ 'Joe' ]
+character === separator output:  [ '', 'Joe' ]
+string:  Joe
+string:  oe
+string:  e
+string:
+newArray  [ 'e' ]
+newArray  [ 'oe' ]
+newArray  [ 'Joe' ]
+newArray  [ 's', 'Joe' ]
+newArray  [ 'is', 'Joe' ]
+newArray  [ 'e', 'is', 'Joe' ]
+newArray  [ 'me', 'is', 'Joe' ]
+newArray  [ 'ame', 'is', 'Joe' ]
+newArray  [ 'name', 'is', 'Joe' ]
+newArray  [ 'y', 'name', 'is', 'Joe' ]
+newArray  [ 'my', 'name', 'is', 'Joe' ]
+newArray  [ 'o', 'my', 'name', 'is', 'Joe' ]
+newArray  [ 'lo', 'my', 'name', 'is', 'Joe' ]
+newArray  [ 'llo', 'my', 'name', 'is', 'Joe' ]
+newArray  [ 'ello', 'my', 'name', 'is', 'Joe' ]
+newArray  [ 'Hello', 'my', 'name', 'is', 'Joe' ]
+[ 'Hello', 'my', 'name', 'is', 'Joe' ]
+*/
