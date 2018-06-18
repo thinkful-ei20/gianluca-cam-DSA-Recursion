@@ -1,4 +1,4 @@
-
+'use strict';
 
 // console.log('Recursion');
 
@@ -81,5 +81,18 @@ const nthTriangularNumber = index => {
 	return index + nthTriangularNumber(index - 1);
 };
 
-console.log(nthTriangularNumber(9));
+// console.log(nthTriangularNumber(9));
 
+/*
+String Splitter
+Split a string based upon a separator (similar to String.prototype.split).
+*/
+
+const stringSplitter = (str, separator) => {
+  if (str.length === 0) return [];
+  if (str[0] === separator) return [str.substr(1)];
+  if (!str[0] === separator) return str[0];
+  return [str[0], ...stringSplitter(str, separator)];
+};
+
+console.log(stringSplitter('The milk has gone bad', 's'));
