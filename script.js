@@ -1,4 +1,4 @@
-'use strict';
+
 
 // console.log('Recursion');
 
@@ -13,11 +13,36 @@ Output:
 */
 
 function countSheep(num) {
-  if (num === 0) {
-    return;
-  }
-  console.log(` ${num} - Another sheep jumps over the fence`);
-  countSheep(num - 1);
+	if (num === 0) {
+		return;
+	}
+	console.log(` ${num} - Another sheep jumps over the fence`);
+	countSheep(num - 1);
 }
 
-countSheep(3);
+// countSheep(3);
+
+
+/** Array Double
+ * Write a function that takes an array as input which contains an unknown set of numbers,
+ *	and outputs an array with each input value doubled. Test your solution by trying a handful of different arrays. For example,
+ *
+ * Input: [1, 2, 3]
+ * Output: [2, 4, 6]
+ *
+ */
+
+const arrayDouble = arr => {
+	if(arr.length === 0) return [];
+
+	arr[0] = arr[0] * 2;
+
+	return [arr[0], ...arrayDouble(arr.slice(1))];
+};
+
+const arr = [1,2,3];
+console.log('Input: ', arr);
+console.log('Output: ', arrayDouble(arr));
+
+
+
