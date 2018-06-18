@@ -88,11 +88,20 @@ String Splitter
 Split a string based upon a separator (similar to String.prototype.split).
 */
 
-const stringSplitter = (str, separator) => {
-  if (str.length === 0) return [];
-  if (str[0] === separator) return [str.substr(1)];
-  if (!str[0] === separator) return str[0];
-  return [str[0], ...stringSplitter(str, separator)];
+const split = (string, separator = undefined, limit = 0) => {
+
+	if( separator === undefined || separator === null) return [];
+
+	if(!string.length) return [''];
+
+	let character = string[0];
+	if(character === separator) {
+		return ['', ...split(string.substr(1), separator, limit)];
+	}
+
+	let newArray = split(string.substr(1), separator, limit);
+	newArray[0] = character + newArray[0];
+	return newArray;
 };
 
-console.log(stringSplitter('The milk has gone bad', 's'));
+console.log(split('The milk has gone bad', 's'));
