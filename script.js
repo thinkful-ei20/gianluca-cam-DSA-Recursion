@@ -1,4 +1,4 @@
-
+'use strict';
 
 // console.log('Recursion');
 
@@ -40,9 +40,22 @@ const arrayDouble = arr => {
 	return [arr[0], ...arrayDouble(arr.slice(1))];
 };
 
-const arr = [1,2,3];
-console.log('Input: ', arr);
-console.log('Output: ', arrayDouble(arr));
+// const arr = [1,2,3];
+// console.log('Input: ', arr);
+// console.log('Output: ', arrayDouble(arr));
 
+/*
+Reverse String
+Write a function that reverses a string. Take a string as input, reverse the string, and return the new string.
+*/
+
+const reverseStr = str => {
+  if (str === '') return '';
+  // Extract part of a string, from the end using .substr(-1)
+  // recusive call excluding the last letter of the string
+  return str.substr(-1) + reverseStr(str.substr(0, str.length -1));
+};
+
+console.log(reverseStr('banana'));
 
 
