@@ -148,7 +148,7 @@ const factorial = num => {
 };
 
 // console.log(factorial(5));
-console.log(split('Hello my name is Joe', ' '));
+// console.log(split('Hello my name is Joe', ' '));
 /*
 string:  Hello my name is Joe
 string:  ello my name is Joe
@@ -376,3 +376,25 @@ newArray  [ 'ello', 'my', 'name', 'is', 'Joe' ]
 newArray  [ 'Hello', 'my', 'name', 'is', 'Joe' ]
 [ 'Hello', 'my', 'name', 'is', 'Joe' ]
 */
+
+/*
+Fibonacci
+Write a recursive function that prints the fibonacci sequence of a given number. 
+The fibonnaci sequence a series of numbers in which each number is the sum of the two preceding numbers. 
+For example the 7th fibonacci number in a fibonaci sequence is 13. 
+The sequence looks as follows: 1 1 2 3 5 8 13.
+*/
+
+const fibonacci = num => {
+  // fibonacci(7) = fibonacci(6) + fibonacci(5)
+  // fibonacci(6) = fibonacci(5) + fibonacci(4)
+  // fibonacci(5) = fibonacci(4) + fibonacci(3)
+  // fibonacci(4) = fibonacci(3) + fibonacci(2)
+  // fibonacci(3) = fibonacci(2) + fibonacci(1)
+  // fibonacci(2) = fibonacci(1) + fibonacci(0)
+  // fibonacci(1) = 1
+  if (num <= 1) return num;
+  return fibonacci(num - 1) + fibonacci(num - 2);
+};
+
+console.log(fibonacci(7));
